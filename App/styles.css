@@ -1,0 +1,445 @@
+/* General Styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 100px;
+}
+
+.logo {
+    font-size: 34px;
+}
+
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    display: block;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+#check {
+    display: none;
+}
+
+.icons {
+    position: absolute;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    display: none;
+    right: 5%;
+    margin-top: 10px;
+}
+
+/* Image Slider */
+.slider img {
+    width: 100%;
+}
+
+.slider {
+    display: none;
+}
+
+.slider-main {
+    display: block;
+}
+
+.imgslider {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.prev {
+    left: -60px;
+}
+
+.next {
+    right: -60px;
+}
+
+.prev:hover, .next:hover {
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dots {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.active, .dot:hover {
+    background-color: black;
+}
+
+/* Section Content */
+section {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.col {
+    margin: auto;
+}
+
+.row h2, .row p {
+    padding: 5px;
+}
+
+/* Section 1 */
+section .section1 p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.section1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.section1 a:hover {
+    color: white;
+    background-color: black
+}
+
+.row2 {
+    padding-top: 40px;
+}
+
+/* Section 2 */
+.section2 h1 {
+    font-size: 80px;
+}
+
+.section2 h2 {
+    font-size: 30px;
+}
+
+.section2 ul li {
+    padding-top: 10px;
+    margin-left: 40px;
+}
+
+.section2 .social {
+    padding-top: 10px;
+}
+
+.section2 .social-icon {
+    padding: 10px;
+    text-align: center;
+}
+
+.section2 .social-icon p {
+    padding-top: 10px;
+}
+
+.section2 .social-icon i {
+    font-size: 80px;
+}
+
+.section2 .social-icon a {
+    text-decoration: none;
+    color: black;
+}
+
+.section2 .social-icon a:hover {
+    color: white;
+    background-color: black;
+}
+
+/* Section 3 */
+.section3 h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.section3 .row {
+    padding-top: 20px;
+}
+
+.section3 h3 {
+    padding-top: 20px;
+}
+
+.section3 p {
+    padding-top: 10px;
+}
+
+.section3 iframe {
+    width: 500px;
+    height: 350px;
+}
+
+/* Footer */
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+footer p {
+    text-align: center;
+}
+
+/* Responsive Media Query */
+
+@media (max-width: 1200px) {
+    .navbar {
+        padding: 20px 40px;
+    }
+
+    .imgslider {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 992px) {
+    .imgslider {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 912px) {
+    .icons {
+        display: block;
+    }
+
+    #check:checked~.icons #menu-icon {
+        display: none;
+    }
+
+    .icons #close-icon {
+        display: none;;
+    }
+
+    #check:checked~.icons #close-icon {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    .navbar-links li a {
+        padding: 10px 14px;
+    }
+
+    .navbar-links li a {
+        font-size: 20px;
+    }
+
+    #check:checked~.navbar-links {
+        display: flex;
+    }
+
+    .imgslider {
+        max-width: 650px;
+    }
+
+    section {
+        width: 80%;
+        margin: 15px auto;
+    }
+
+    section .section1 {
+        flex-direction: row;
+    }
+
+    section .section2 .social {
+        flex-direction: row;
+    }
+
+    .section3 {
+        text-align: center;
+    }
+
+    section .section3 div .hours {
+        flex-direction: row;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .row .col {
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .imgslider {
+        max-width: 600px;
+    }
+
+    .section2 div h1, .section2 div h2, .section2 div h3, .section2 div p{
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .imgslider {
+        max-width: 400px;
+    }
+    
+    .section1 img {
+        width: 150px;
+        height: 150px;
+    }
+
+    section .row2 {
+        padding-top: 20px;
+    }
+
+    .section3 iframe {
+        width: 400px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 450px) {
+    .imgslider {
+        max-width: 300px;
+    }
+
+    .prev, .next {
+        padding: 10px;
+    }
+
+    .prev {
+        left: -50px;
+    }
+    
+    .next {
+        right: -50px;
+    }
+
+    .section1 img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .section3 iframe {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 400px) {
+    .imgslider {
+        max-width: 250px;
+    }
+
+    .section3 iframe {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 350px) {
+    .row .col {
+        padding-bottom: 20px;
+    }
+
+    .imgslider {
+        max-width: 200px;
+    }
+
+    .prev, .next {
+        padding: 10px;
+    }
+
+    .prev {
+        left: -40px;
+    }
+    
+    .next {
+        right: -40px;
+    }
+
+    .section2 .social-icon p {
+        padding-top: 5px;
+        font-size: 12px;
+    }
+
+    .section2 .social-icon i {
+        font-size: 40px;
+    }
+
+    .section3 iframe {
+        width: 200px;
+        height: 150px;
+    }
+}

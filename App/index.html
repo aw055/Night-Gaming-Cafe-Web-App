@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Night</div>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class="fa-solid fa-bars" id="menu-icon"></i>
+            <i class="fa-solid fa-x" id="close-icon"></i>
+        </label>
+
+        <div class="navbar-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Rates/FAQ</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">PC Gaming</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Member Sign-In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Image Slider -->
+    <div class="imgslider">
+        <div class="slider slider-main">
+            <img src="img/img1.png">
+        </div>
+
+        <div class="slider">
+            <img src="img/img2.png">
+        </div>
+
+        <div class="slider">
+            <img src="img/img3.png">
+        </div>
+
+        <a class="prev" onclick="nextprevBtn(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <a class="next" onclick="nextprevBtn(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>  
+    </div>
+
+    <div class="dots">
+        <span class="dot" onclick="currSlide(1)"></span>
+        <span class="dot" onclick="currSlide(2)"></span>
+        <span class="dot" onclick="currSlide(3)"></span>
+    </div>
+
+    <!-- Section 1 -->
+    <section>
+        <div class="row section1">
+            <div class="col">
+                <img src="img/section_img1.png">
+                <p><a href="#">PC Gaming</a></p>
+            </div>
+            <div class="col">
+                <img src="img/section_img2.png">
+                <p><a href="#">Rates/FAQ</a></p>
+            </div>
+        </div>
+        <div class="row row2 section1">
+            <div class="col">
+                <img src="img/section_img3.png">
+                <p><a href="#">Printing</a></p>
+            </div>
+            <div class="col">
+                <img src="img/section_img4.png">
+                <p><a href="#">Menu</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section>
+        <div class="row section2">
+            <div class="col">
+                <h1>Night</h1>
+                <h3>Gaming Cafe</h3> <br>
+
+                <h2>About our cafe</h2>
+                <p>10,000 square foot venue featuring</p>
+                <ul>
+                    <li>Over 150 PCs</li>
+                    <li>Over 20 VIP gaming rooms</li>
+                    <li>140" HDMI projector</li>
+                    <li>50" TVs</li>
+                    <li>Cafe</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h2>Social Media</h2>
+                <div class="row social">
+                    <div class="col">
+                        <div class="social-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                            <p><a href="#">Twitter/X</a></p>
+                        </div>
+                        <div class="social-icon">
+                            <i class="fa-brands fa-youtube"></i>
+                            <p><a href="#">Youtube</a></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="social-icon">
+                            <i class="fa-brands fa-square-facebook"></i>
+                            <p><a href="#">Facebook</a></p>
+                        </div>
+                        <div class="social-icon">
+                            <i class="fa-brands fa-tiktok"></i>
+                            <p><a href="#">TikTok</a></p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="social-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                            <p><a href="#">Instagram</a></p>
+                        </div>
+                        <div class="social-icon">
+                            <i class="fa-brands fa-twitch"></i>
+                            <p><a href="#">Twitch</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section>
+        <div class="section3">
+            <h2>Contact Us</h2>
+            <div class="row">
+                <div class="col">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369107.5366642906!2d-79.7076989920169!3d43.7177675396109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1695832870493!5m2!1sen!2sca"></iframe>
+                </div>
+                <div class="col">
+                    <h3>Located at</h3>
+                    <p>
+                        123 Temp Placeholder St,<br>
+                        Toronto, ON, ABC 456
+                    </p>
+
+                    <h3>Operational Hours:</h3>
+                    <div class="row hours">
+                        <div class="col">
+                            <p>Monday</p>
+                            <p>Tuesday</p>
+                            <p>Wednesday</p>
+                            <p>Thursday</p>
+                            <p>Friday</p>
+                            <p>Saturday</p>
+                            <p>Sunday</p>
+                        </div>
+                        <div class="col">
+                            <p>12pm - 1am</p>
+                            <p>12pm - 1am</p>
+                            <p>12pm - 1am</p>
+                            <p>12pm - 1am</p>
+                            <p>12pm - 2am</p>
+                            <p>12pm - 2am</p>
+                            <p>12pm - 1am</p>
+                        </div>
+                    </div>
+
+                    <p>
+                        Call us at <br>
+                        +1 (123) 456-7890
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; by Night Gaming Cafe</p>
+    </footer>
+</body>
+</html>
