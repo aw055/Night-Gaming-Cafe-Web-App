@@ -239,6 +239,7 @@ footer p {
 }
 
 /* Responsive Media Query */
+
 @media (max-width: 1200px) {
     .navbar {
         padding: 20px 40px;
@@ -317,6 +318,10 @@ footer p {
         flex-direction: row;
     }
 
+    .section2 div h2{
+        text-align: center;
+    }
+
     section .section2 .social {
         flex-direction: row;
     }
@@ -343,7 +348,7 @@ footer p {
         max-width: 600px;
     }
 
-    .section2 div h1, .section2 div h2, .section2 div h3, .section2 div p{
+    .section2 div h1, .section2 div h3, .section2 div p{
         text-align: center;
     }
 }
