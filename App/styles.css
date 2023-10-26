@@ -239,7 +239,6 @@ footer p {
 }
 
 /* Responsive Media Query */
-
 @media (max-width: 1200px) {
     .navbar {
         padding: 20px 40px;
