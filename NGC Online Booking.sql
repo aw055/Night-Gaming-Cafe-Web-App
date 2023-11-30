@@ -1,5 +1,5 @@
 /* 
-	Night Gaming Cafe Web Application
+    Night Gaming Cafe Web Application
     Online Booking Database
 */
 
@@ -13,7 +13,7 @@ use NGC_Online_Booking;
 /* Create Member Table */
 drop table if exists Member;
 create table Member (
-	MemID int not null auto_increment,
+    MemID int not null auto_increment,
     MemNum varchar(9) not null default '',
     FirstName varchar(50) not null default '',
     LastName varchar(50) not null default '',
@@ -31,10 +31,10 @@ create table Member (
 /* Create Cafe Table */
 drop table if exists Cafe;
 create table Cafe (
-	CafeID int not null auto_increment,
+    CafeID int not null auto_increment,
     Name varchar(255) not null default '',
     Address varchar(255) not null default '',
-	Phone varchar(15) not null default '',
+    Phone varchar(15) not null default '',
     primary key (CafeID),
     constraint unique (CafeID)
 ) engine=InnoDB default charset=utf8mb4;
@@ -42,11 +42,11 @@ create table Cafe (
 /* Create Room Type Table */
 drop table if exists Room_Type;
 create table Room_Type (
-	RmTypeID int not null auto_increment,
+    RmTypeID int not null auto_increment,
     Type enum('Gaming Room', 'VIP Room', 'eSports Conference Room', 'None') not null default 'None',
     Name varchar(50) not null default '',
     Capacity enum('4', '6', '8', '10', 'None') not null default 'None',
-	Description text,
+    Description text,
     primary key (RmTypeID),
     constraint unique (RmTypeID, Name)
 ) engine=InnoDB default charset=utf8mb4;
@@ -54,7 +54,7 @@ create table Room_Type (
 /* Create Room Table */
 drop table if exists Room;
 create table Room (
-	RmID int not null auto_increment,
+    RmID int not null auto_increment,
     RmNum varchar(5) not null default '',
     FloorNum enum('Floor 1', 'Floor 2', 'None') not null default 'None',
     Available enum('Y', 'N', 'Nonexistent') not null default 'Y',
@@ -69,7 +69,7 @@ create table Room (
 /* Create Room Reservation Table */
 drop table if exists Room_Reservation;
 create table Room_Reservation (
-	RmResID int not null auto_increment,
+    RmResID int not null auto_increment,
     ResNum varchar(11) not null default '',
     Date date not null,
     Type enum('Gaming Room', 'VIP Room', 'eSports Conference Room') not null,
@@ -87,10 +87,10 @@ create table Room_Reservation (
 /* Create Section Type Table */
 drop table if exists Section_Type;
 create table Section_Type (
-	SectionTypeID int not null auto_increment,
+    SectionTypeID int not null auto_increment,
     Type enum('Lobby', 'eSports', 'Stage', 'None') not null default 'None',
     Name varchar(50) not null default '',
-	Description text,
+    Description text,
     primary key (SectionTypeID),
     constraint unique (SectionTypeID, Name)
 ) engine=InnoDB default charset=utf8mb4;
@@ -98,7 +98,7 @@ create table Section_Type (
 /* Create Lounge Seating Table */
 drop table if exists Lounge_Seating;
 create table Lounge_Seating (
-	LoungeSeatID int not null auto_increment,
+    LoungeSeatID int not null auto_increment,
     SeatNum varchar(5) not null default '',
     Available enum('Y', 'N', 'Nonexistent') not null default 'Y',
     SectionTypeID int not null default 1,
@@ -112,7 +112,7 @@ create table Lounge_Seating (
 /* Create Seat Reservation Table */
 drop table if exists Seat_Reservation;
 create table Seat_Reservation (
-	SeatResID int not null auto_increment,
+    SeatResID int not null auto_increment,
     ResNum varchar(11) not null default '',
     Date date not null,
     Type enum('Lobby', 'eSports', 'Stage') not null,
@@ -130,7 +130,7 @@ create table Seat_Reservation (
 /* Create Staff Table */
 drop table if exists Staff;
 create table Staff (
-	StaffID int not null auto_increment,
+    StaffID int not null auto_increment,
     StaffNum varchar(9) not null default '',
     FirstName varchar(50) not null default '',
     LastName varchar(50) not null default '',
