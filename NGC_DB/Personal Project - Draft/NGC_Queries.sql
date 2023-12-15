@@ -1,6 +1,6 @@
 /* 
-    Night Gaming Cafe Web Application
-    System Operations of 'Night_Gaming_Cafe'
+	Night Gaming Cafe Web Application
+    System Operations of 'NightGamingCafe'
 */
 
 /* Registration */
@@ -106,21 +106,21 @@ from (Booking inner join Member on Booking.MemID = Member.ID) inner join Room on
 where BkNum = 'G2024010801';
 
 /* Check VIP Room availability where Capacity is equal or more than 5 people */
-select Room.RmNum, Room.Available, Room_Type.Type, Room_Type.Capacity, Room_Type.Description
-from Room inner join Room_Type on Room.RmTypeID = Room_Type.ID
-where Room_Type.Type = 'Gaming Room' and Room_Type.Capacity >= 5 and Room.Available = 'Y';
+select Room.RmNum, Room.Available, RoomType.Type, RoomType.Capacity, RoomType.Description
+from Room inner join RoomType on Room.RmTypeID = RoomType.ID
+where RoomType.Type = 'Gaming Room' and RoomType.Capacity >= 5 and Room.Available = 'Y';
 
 /* Update Booking  */
 update Booking set RmID = (select ID from Room where RmNum = 'GR 03') where BkNum = 'G2024010801';
 /* Update Room availability */
-update Room set Available = 'N' where RmNum = 'GR 03';
+update Room set Available = 'N', Reserve = 'Y' where RmNum = 'GR 03';
 
 /* Show all unavailable rooms in Room */
-select Room.RmNum, Room.Available, Room_Type.Type, Room_Type.Capacity, Room_Type.Description
-from Room inner join Room_Type on Room.RmTypeID = Room_Type.ID where Room.Available = 'N' ;
+select Room.RmNum, Room.Available, Room.Reserve, RoomType.Type, RoomType.Capacity, RoomType.Description
+from Room inner join RoomType on Room.RmTypeID = RoomType.ID where Room.Available = 'N' ;
 
 /* Reset Room availability */
-update Room set Available = 'Y';
+update Room set Available = 'Y', Reserve = 'N';
 
 /* Delete a Room */
 update Booking set RmID = (select ID from Room where RmNum = 'Nonexistent') where RmID = (select ID from Room where RmNum = 'GR 03');
@@ -128,44 +128,47 @@ delete from Room where RmNum = 'GR 03';
 
 /* Adding a Room */
 insert into Room (RmNum, Available, RmTypeID, CafeID) values ('GR 08', 'Y', 4, 1);
-select Room.RmNum, Room.Available, Room_Type.Type, Room_Type.Capacity, Room_Type.Description
-from Room inner join Room_Type on Room.RmTypeID = Room_Type.ID
-where Room_Type.Type = 'Gaming Room';
+select Room.RmNum, Room.Available, RoomType.Type, RoomType.Capacity, RoomType.Description
+from Room inner join RoomType on Room.RmTypeID = RoomType.ID
+where RoomType.Type = 'Gaming Room';
 
 /* Seat Management */
 /* Check a person booking */
 select Booking.BkNum, Booking.Date, Booking.Type, Booking.NumPeople, time_format(Booking.StartTime, "%h:%i %p") as StartTime, 
-if (Booking.EndTime = 'Not Sure', 'Not Sure', time_format(Booking.EndTime, "%h:%i %p")) as EndTime, Room.RmNum, Member.MemNum, Member.FirstName, Member.LastName 
+if (Booking.EndTime = 'Not Sure', 'Not Sure', time_format(Booking.EndTime, "%h:%i %p")) as EndTime, Room.RmNum, Booking.EmplNotes, Member.MemNum, Member.FirstName, Member.LastName 
 from (Booking inner join Member on Booking.MemID = Member.ID) inner join Room on Booking.RmID = Room.ID
 where Booking.Date = '2024-02-01' and Member.FirstName = 'Thomas';
 
 /* Check Seat availability */
-select Room.RmNum, Seat.SeatNum , Seat.Available, Seat_Type.Type as Seat_Type, Section.Name, Section.Type as Section_Type
-from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join Room_Type on Room.RmTypeID = Room_Type.ID) 
-inner join Seat_Type on Seat.SeatTypeID = Seat_Type.ID) inner join Section on Seat.SectionID = Section.ID)
-where Room_Type.Type = 'Lounge' and Seat_Type.Type = 'Lobby' and Seat.Available = 'Y';
+select Room.RmNum, Seat.SeatNum , Seat.Available, SeatType.Type as SeatType, Section.Name, Section.Type as Section_Type
+from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join RoomType on Room.RmTypeID = RoomType.ID) 
+inner join SeatType on Seat.SeatTypeID = SeatType.ID) inner join Section on Seat.SectionID = Section.ID)
+where RoomType.Type = 'Lounge' and SeatType.Type = 'Lobby' and Seat.Available = 'Y';
+
+/* Update Booking  */
+update Booking set EmplNotes = 'Seat Number reserved LA 01' where BkNum = 'L2024020107';
 
 /* Update Seat availability */
-update Seat set Available = 'N' where SeatNum = 'LA 01';
+update Seat set Available = 'N', Reserve = 'Y' where SeatNum = 'LA 01';
 
 /* Show all unavailable seats */
-select Room.RmNum, Seat.SeatNum , Seat.Available, Seat_Type.Type as Seat_Type, Section.Name, Section.Type as Section_Type
-from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join Room_Type on Room.RmTypeID = Room_Type.ID) 
-inner join Seat_Type on Seat.SeatTypeID = Seat_Type.ID) inner join Section on Seat.SectionID = Section.ID)
+select Room.RmNum, Seat.SeatNum , Seat.Available, SeatType.Type as SeatType, Section.Name, Section.Type as Section_Type
+from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join RoomType on Room.RmTypeID = RoomType.ID) 
+inner join SeatType on Seat.SeatTypeID = SeatType.ID) inner join Section on Seat.SectionID = Section.ID)
 where Seat.Available = 'N';
 
 /* Reset Seat availability */
-update Seat set Available = 'Y';
+update Seat set Available = 'Y', Reserve = 'N';
 
 /* Delete a Seat */
 delete from Seat where SeatNum = 'LA 01';
 
 /* Adding a Seat */
 insert into Seat (SeatNum, Available, RmID, SeatTypeID, SectionID) values ('LA 11', 'Y', 3, 1, 1);
-select Room.RmNum, Seat.SeatNum , Seat.Available, Seat_Type.Type as Seat_Type, Section.Name, Section.Type as Section_Type
-from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join Room_Type on Room.RmTypeID = Room_Type.ID) 
-inner join Seat_Type on Seat.SeatTypeID = Seat_Type.ID) inner join Section on Seat.SectionID = Section.ID)
-where Room_Type.Type = 'Lounge' and Seat_Type.Type = 'Lobby' and SeatNum like 'LA%';
+select Room.RmNum, Seat.SeatNum , Seat.Available, SeatType.Type as SeatType, Section.Name, Section.Type as Section_Type
+from ((((Room inner join Seat on Room.ID = Seat.RmID) inner join RoomType on Room.RmTypeID = RoomType.ID) 
+inner join SeatType on Seat.SeatTypeID = SeatType.ID) inner join Section on Seat.SectionID = Section.ID)
+where RoomType.Type = 'Lounge' and SeatType.Type = 'Lobby' and SeatNum like 'LA%';
 
 /* System Support */
 /* Add Role */
