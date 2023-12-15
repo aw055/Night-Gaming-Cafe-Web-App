@@ -1,5 +1,5 @@
 /* 
-	Night Gaming Cafe Web Application
+    Night Gaming Cafe Web Application
     Setup Database 'NightGamingCafe'
 */
 
@@ -15,8 +15,8 @@ use NightGamingCafe;
 /* Create Account Table */
 drop table if exists Account;
 create table Account (
-	ID int auto_increment primary key,
-	UserName varchar(50) not null,
+    ID int auto_increment primary key,
+    UserName varchar(50) not null,
     Password varchar(100) not null, /* store sha1('password') */
     Email varchar(255) not null,
     Active enum('Y','N') not null default 'Y',
@@ -43,7 +43,7 @@ insert into Account (UserName, Password, Email) values
 /* Create Member Table */
 drop table if exists Member;
 create table Member (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     MemNum varchar(9) not null,
     FirstName varchar(50) not null,
     LastName varchar(50) not null,
@@ -77,7 +77,7 @@ insert into Member (MemNum, FirstName, LastName, DOB, Phone, CardBalance, Regist
 /* Create Cafe Table */
 drop table if exists Cafe;
 create table Cafe (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     Name varchar(255) not null,
     Address varchar(255) not null,
     Postcode varchar(7) not null,
@@ -85,7 +85,7 @@ create table Cafe (
     Prov varchar(50) not null,
     Country varchar(50) not null,
     NumRooms smallint not null,
-	Phone varchar(15) not null,
+    Phone varchar(15) not null,
     LastUpdated datetime not null default now(),
     /* Check for duplicates */
     unique key (Name, Address, Postcode, City, Prov, Country, NumRooms, Phone),
@@ -102,13 +102,13 @@ insert into Cafe (Name, Address, Postcode, City, Prov, Country, NumRooms, Phone)
 /* Create Room_Type Table */
 drop table if exists RoomType;
 create table RoomType (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     Type enum('Lounge','Gaming Room','VIP Room','EC Room','None','Nonexistent') not null,
     FloorNum varchar(7) not null,
     Capacity smallint not null,
     Price decimal(5,2) not null,
     DefaultPrice decimal(5,2) not null,
-	Description varchar(100),
+    Description varchar(100),
     LastUpdated datetime not null default now(),
     /* Check for duplicates */
     unique key (Type, FloorNum, Capacity, Price, DefaultPrice, Description)
@@ -137,7 +137,7 @@ insert into RoomType (Type, FloorNum, Capacity, Price, DefaultPrice, Description
 /* Create Room Table */
 drop table if exists Room;
 create table Room (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     RmNum varchar(15) not null,
     Available enum('Y','N','None') not null,
     Reserve enum('Y','N') not null default 'N',
@@ -177,10 +177,10 @@ insert into Room (RmNum, Available, RmTypeID, CafeID) values
 /* Create Section Table */
 drop table if exists Section;
 create table Section (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     Type enum('Lobby','eSports','Stage') not null,
     Name varchar(11) not null,
-	Description varchar(100),
+    Description varchar(100),
     LastUpdated datetime not null default now(),
     RmID int not null,
     constraint foreign key (RmID) references Room(ID) on update restrict,
@@ -205,11 +205,11 @@ insert into Section (Type, Name, Description, RmID) values
 /* Create Seat_Type Table */
 drop table if exists SeatType;
 create table SeatType (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     Type enum('Lobby','eSports','Stage') not null,
     Price decimal(4,2) not null,
     DefaultPrice decimal(4,2) not null,
-	Description varchar(100),
+    Description varchar(100),
     LastUpdated datetime not null default now(),
     /* Check for duplicates */
     unique key (Type, Price, DefaultPrice, Description),
@@ -225,13 +225,13 @@ insert into SeatType (Type, Price, DefaultPrice, Description) values
 /* Create Seat Table */
 drop table if exists Seat;
 create table Seat (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     SeatNum varchar(5) not null default '',
     Available enum('Y', 'N') not null,
     Reserve enum('Y', 'N') not null default 'N',
     LastUpdated datetime not null default now(),
     RmID int not null,
-	SeatTypeID int not null,
+    SeatTypeID int not null,
     SectionID int not null,
     constraint foreign key (RmID) references Room(ID) on update restrict,
     constraint foreign key (SeatTypeID) references SeatType(ID) on update restrict,
@@ -265,7 +265,7 @@ insert into Seat (SeatNum, Available, RmID, SeatTypeID, SectionID) values
 /* Create Booking Table */
 drop table if exists Booking;
 create table Booking (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     BkNum varchar(11) not null,
     Date date not null,
     Type enum('Gaming Room','VIP Room','EC Room','Lounge Lobby','Lounge eSports','Lounge Stage') not null,
@@ -327,7 +327,7 @@ insert into Booking (BkNum, Date, Type, NumPeople, StartTime, EndTime, MemID, Rm
 /* Create Role Table */
 drop table if exists Role;
 create table Role (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     Name varchar(15) not null,
     Description varchar(120),
     LastUpdated datetime not null default now(),
@@ -344,7 +344,7 @@ insert into Role (Name, Description) values
 /* Create Employee Table */
 drop table if exists Employee;
 create table Employee (
-	ID int auto_increment primary key,
+    ID int auto_increment primary key,
     EmplNum varchar(9) not null,
     FirstName varchar(50) not null,
     LastName varchar(50) not null,
