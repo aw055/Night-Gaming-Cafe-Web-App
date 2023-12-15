@@ -1,5 +1,5 @@
 /* 
-	Night Gaming Cafe Web Application
+    Night Gaming Cafe Web Application
     System Operations of 'NightGamingCafe'
 */
 
