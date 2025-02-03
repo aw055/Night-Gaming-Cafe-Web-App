@@ -7,9 +7,6 @@ The Night Gaming Cafe is a place where people go to play online pc games using o
 
 ## Figma Design
 
-https://www.figma.com/file/ZwPVkxMfF048IqmYPk49ag/Night-Gaming-Cafe?type=design&node-id=0%3A1&mode=design&t=f8xY9B0OACbKBXGL-1
-
-
 ## User Stories
 
 ### Main User
